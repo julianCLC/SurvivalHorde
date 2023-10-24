@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class GameUI : MonoBehaviour
     RectTransform rect;
     [SerializeField] Slider xpBar;
     [SerializeField] Slider hpBar;
+    [SerializeField] TMP_Text currentTime;
     
 
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class GameUI : MonoBehaviour
     void Update() {
         XpBarUpdate();
         HpBarUpdate();
+        TimerUpdate();
     }
 
     void XpBarUpdate(){
@@ -38,6 +41,14 @@ public class GameUI : MonoBehaviour
 
         float currentHp = (float)GameManager.instance._playerGameFunctions._health / GameManager.instance._playerGameFunctions._maxHealth;
         hpBar.value = currentHp;
+    }
+
+    void TimerUpdate(){
+        float timeElapsed = GameManager.instance.timeElapsed;
+        int minutes = (int)(timeElapsed / 60);
+        int seconds = (int)(timeElapsed % 60);
+
+        currentTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
         
 }

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     // [HideInInspector] public Vector2 _playerPos2D {get; private set;}
     // [HideInInspector] public Vector3 _screenToWorldCentrePoint {get; private set;}
     public bool _paused {get; private set;}
+    public float timeElapsed {get; private set;}
 
     public float initPlayerXp = 0;
     public float initPlayerLvlThresh = 10;
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
 
     // ~~ Private Properties ~~
     // -- Game properties --
-    private float timeElapsed = 0;
     private float timeSinceLastSpawned = 0f;
     private float spawnInterval = 2f;
     private EnemyPooler enemyPooler;
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         // Initialize properties
         _playerXp = initPlayerXp;
         _playerLvlXpThresh = initPlayerLvlThresh;
+        timeElapsed = 0f;
         GetSpawnPoints();
     }
 
