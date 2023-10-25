@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0078897f468b24390f9bf44a4f4b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 5
+  initHealth: 10
   initHitRecoverTime: 1
 --- !u!114 &8616685848737228371
 MonoBehaviour:

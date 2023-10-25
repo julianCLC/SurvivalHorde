@@ -10,6 +10,33 @@ public class ShootAbility : Ability
     public LayerMask hitLayerMask;
     
     public override void Activate(GameObject parent) {
+
+        switch (upgradeType) {
+            case Upgrade.none:
+                BaseAbility(parent);
+                break;
+            
+            case Upgrade.upgrade1:
+            AbilityUpgrade1(parent);
+                break;
+
+            
+            case Upgrade.upgrade2:
+            AbilityUpgrade2(parent);
+                break;
+        }
+
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+
+        _cooldownTime *= 0.7f; 
+
+    }
+
+    public override void BaseAbility(GameObject parent){
         Transform shootPoint = GameManager.instance._firstPersonController.shootPoint;
         float bulletDistance = _weaponRange;
 
@@ -33,14 +60,7 @@ public class ShootAbility : Ability
         bulletTracer.PlayFX(shootPoint.forward, shootPoint.position, bulletDistance);
 
         SoundManager.instance.PlaySound("ShootFX");
-
     }
-
-    public override void LevelUp()
-    {
-        base.LevelUp();
-
-        _cooldownTime *= 0.7f; 
-
-    }
+    public override void AbilityUpgrade1(GameObject parent){}
+    public override void AbilityUpgrade2(GameObject parent){}
 }

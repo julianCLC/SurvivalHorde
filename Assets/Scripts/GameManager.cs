@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.iOS;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     // Debug
     [SerializeField] bool debugPause = false;
-    public AbilityHolder ability;
+    public AbilityHolder DEBUGAbility;
     
     // Components
     [field: SerializeField] public GameObject player { get; private set; }
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     public float _playerXp {get; private set;}
     public float _playerLvlXpThresh {get; private set;} // xp to get to next level
     public int _playerLvl {get; private set;}
+
+    public static Action levelUpEvent;
 
     // ~~ Private Properties ~~
     // -- Game properties --
@@ -208,8 +211,13 @@ public class GameManager : MonoBehaviour
 
         // do something ...
         Debug.Log("Level UP");
-        ability.LevelUpAbility();
+        DEBUGAbility.LevelUpAbility();
+
+        TogglePause();
+        levelUpEvent.Invoke();
     }
+
+    
 
     public void PauseGame(){
         _paused = true;

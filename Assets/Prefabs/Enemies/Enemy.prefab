@@ -111,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db2641c48ff94940b2cae41f715f4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 5
+  initHealth: 10
   initSpeed: 20
-  attackPower: 1
+  attackPower: 2
+  xp: 1
+  Pooler: {fileID: 0}
 --- !u!54 &5674579784820977435
 Rigidbody:
   m_ObjectHideFlags: 0
