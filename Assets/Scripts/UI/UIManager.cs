@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     void OnLevelUp(){
         LevelUpScreen.SetActive(true);
+        GameManager.instance.TogglePause();
     }
 
     public void ChoseLevelUp(){

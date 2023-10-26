@@ -15,6 +15,7 @@ public class Ability : ScriptableObject
     [HideInInspector] public float _activeTime;
     [HideInInspector] public int _damage;
     [HideInInspector] public int _level;
+    
     [HideInInspector] public Upgrade upgradeType;
 
     public enum Upgrade{
@@ -28,6 +29,7 @@ public class Ability : ScriptableObject
         _activeTime = activeTime;
         _damage = damage;
         _level = level;
+        upgradeType = Upgrade.none;
 
     }
     

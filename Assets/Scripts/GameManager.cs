@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public int _playerLvl {get; private set;}
 
     public static Action levelUpEvent;
+    public AbilityUtilities abilityUtilities;
 
     // ~~ Private Properties ~~
     // -- Game properties --
@@ -209,12 +210,10 @@ public class GameManager : MonoBehaviour
         _playerLvl++;
         _playerLvlXpThresh *= 1.1f;
 
-        // do something ...
-        Debug.Log("Level UP");
-        DEBUGAbility.LevelUpAbility();
-
-        TogglePause();
         levelUpEvent.Invoke();
+
+        // Debug.Log("Level UP");
+        // DEBUGAbility.LevelUpAbility();
     }
 
     

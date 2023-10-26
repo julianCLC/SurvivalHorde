@@ -17,12 +17,12 @@ public class ShootAbility : Ability
                 break;
             
             case Upgrade.upgrade1:
-            AbilityUpgrade1(parent);
+                AbilityUpgrade1(parent);
                 break;
 
             
             case Upgrade.upgrade2:
-            AbilityUpgrade2(parent);
+                AbilityUpgrade2(parent);
                 break;
         }
 
