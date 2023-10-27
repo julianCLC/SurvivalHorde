@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         if(timeSinceLastSpawned > spawnInterval){
             timeSinceLastSpawned = 0;
-            SpawnEnemies();
+            // SpawnEnemies();
             // SpawnEnemiesAllPoints();
         }
 

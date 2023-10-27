@@ -6,6 +6,9 @@ using UnityEngine;
 public class Ability : ScriptableObject
 {
     public new string name;
+    public LayerMask hitLayerMask;
+
+    // ability properties
     [SerializeField] private float cooldownTime;
     [SerializeField] private float activeTime;
     [SerializeField] private int damage;
@@ -15,6 +18,7 @@ public class Ability : ScriptableObject
     [HideInInspector] public float _activeTime;
     [HideInInspector] public int _damage;
     [HideInInspector] public int _level;
+    
     
     [HideInInspector] public Upgrade upgradeType;
 

@@ -48,6 +48,7 @@ public enum PoolType{
     none,
     bulletFX,
     enemy,
-    smokePuffFX
+    smokePuffFX,
+    slashEffectFx
 }
 

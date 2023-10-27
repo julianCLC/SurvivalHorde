@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1375632711717943674
+--- !u!1 &6685398992742558677
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7022126383470562869}
-  - component: {fileID: 4110241570915668581}
-  - component: {fileID: 7557549966937728018}
+  - component: {fileID: 2176301257927375734}
+  - component: {fileID: 5488023316745554034}
   m_Layer: 0
-  m_Name: BulletTracer
+  m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7022126383470562869
+--- !u!4 &2176301257927375734
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375632711717943674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3367428, y: 1.8305041, z: 0.12565804}
+  m_GameObject: {fileID: 6685398992742558677}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3992211032294463184}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &4110241570915668581
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!96 &5488023316745554034
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375632711717943674}
+  m_GameObject: {fileID: 6685398992742558677}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -54,7 +53,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: def2dd6650e792447b8f4be61d3a8722, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +74,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -84,39 +83,39 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.05
-        inSlope: 1.5220995
-        outSlope: 1.5220995
+        value: 0.15068054
+        inSlope: 7.1684017
+        outSlope: 7.1684017
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.49049047
+        outWeight: 0.28891253
       - serializedVersion: 3
-        time: 0.3
-        value: 0.35
-        inSlope: 0.040656213
-        outSlope: 0.040656213
+        time: 0.14251226
+        value: 0.56036437
+        inSlope: 0.53362685
+        outSlope: 0.53362685
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.84234226
+        outWeight: 0.36886153
       - serializedVersion: 3
-        time: 0.7
-        value: 0.35
-        inSlope: -0.046465356
-        outSlope: -0.046465356
+        time: 0.48799133
+        value: 0.43150568
+        inSlope: -0.7682601
+        outSlope: -0.7682601
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.7372371
+        inWeight: 0.5039573
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.05
-        inSlope: -1.858199
-        outSlope: -1.858199
+        value: 0
+        inSlope: -0.7315843
+        outSlope: -0.7315843
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.34034032
+        inWeight: 0.32024366
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -152,26 +151,59 @@ TrailRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &7557549966937728018
+--- !u!1 &7799695152597719410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3992211032294463184}
+  - component: {fileID: 1718453295651117142}
+  m_Layer: 0
+  m_Name: SlashTracer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3992211032294463184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799695152597719410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2176301257927375734}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718453295651117142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375632711717943674}
+  m_GameObject: {fileID: 7799695152597719410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d30718092899ec45a84f56967f6914a, type: 3}
+  m_Script: {fileID: 11500000, guid: 789b4d458ba93e447b15a0f8acec46e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
-  moveSegment: 10
-  tailLength: 20
-  trailRenderer: {fileID: 4110241570915668581}
+  moveSpeed: 0.2
+  slashWidth: 2
+  trailRenderer: {fileID: 5488023316745554034}
+  trailSource: {fileID: 2176301257927375734}

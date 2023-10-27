@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f62a08bea9ab25e43a8bd26f79e420df, type: 3}
-  m_Name: Shoot
+  m_Script: {fileID: 11500000, guid: 7b01a08cea721f04d82626d181e129f3, type: 3}
+  m_Name: Slash
   m_EditorClassIdentifier: 
-  name: Shoot
+  name: Slash
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  cooldownTime: 1
-  activeTime: 0
-  damage: 5
+  cooldownTime: 0.2
+  activeTime: 0.1
+  damage: 1
   level: 1
-  _cooldownTime: 1
-  _activeTime: 0
-  _damage: 5
+  _cooldownTime: 0.2
+  _activeTime: 0.1
+  _damage: 1
   _level: 1
   upgradeType: 0
-  _weaponRange: 10
+  _weaponRange: 3

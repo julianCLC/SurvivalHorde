@@ -18,12 +18,7 @@ public class BulletTracer : MonoBehaviour
     private bool _destroyFlag = false;
     private float _timeToDestroy = 0;
     private Action<BulletTracer> _killAction;
-    private TrailRenderer trailRenderer;
-
-    void Awake(){
-        // _transform = transform;
-        trailRenderer = GetComponent<TrailRenderer>();
-    }
+    [SerializeField] private TrailRenderer trailRenderer;
 
     void Start(){
         trailRenderer.time = moveSpeed*(tailLength/100f);

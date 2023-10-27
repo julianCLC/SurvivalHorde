@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class ShootAbility : Ability
 {
     public float _weaponRange;
-    public LayerMask hitLayerMask;
+    // public LayerMask hitLayerMask;
     
     public override void Activate(GameObject parent) {
 
