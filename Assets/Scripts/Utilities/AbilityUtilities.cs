@@ -25,4 +25,13 @@ public class AbilityUtilities : MonoBehaviour
         ability.LevelUp();
     }
 
+    public static Vector3 AddImpact(Vector3 direction, float force){
+        // Vector3 impact = Vector3.zero;
+        direction.Normalize();
+        if(direction.y < 0) direction.y = -direction.y; // reflect down force on the ground
+        return direction.normalized * force;
+
+        // return impact;
+    }
+
 }

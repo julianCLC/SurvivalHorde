@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 11400000, guid: 6ac25846d7ea3814cad1f567d3ffb6f1, type: 2}
+  - {fileID: 11400000, guid: bafc1dea6e9a4eb41a1c9a0da0f0a712, type: 2}
+  - {fileID: 11400000, guid: c46e6b003a1d3ff4abf25c6b3a58aba6, type: 2}
 --- !u!1 &6422235130598183302
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,3 +102,4 @@ MonoBehaviour:
     m_Bits: 0
   initPlayerXp: 0
   initPlayerLvlThresh: 10
+  abilityUtilities: {fileID: 0}

@@ -34,6 +34,10 @@ public class SoundManager : MonoBehaviour
                 sound.Play();
                 soundPlayed = true;
             }
+            else if(sound.gameObject.name == soundName){
+                sound.Play();
+                soundPlayed = true;
+            }
         }
 
         if(!soundPlayed){
@@ -47,6 +51,10 @@ public class SoundManager : MonoBehaviour
             if(sound.name == soundName){
                 soundToReturn = sound;
                 break;
+            }
+            else if(sound.gameObject.name == soundName){
+                sound.Play();
+                soundToReturn = sound;
             }
         }
         if(soundToReturn == null){

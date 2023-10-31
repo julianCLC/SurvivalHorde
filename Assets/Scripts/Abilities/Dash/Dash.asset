@@ -9,21 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b01a08cea721f04d82626d181e129f3, type: 3}
-  m_Name: Slash
+  m_Script: {fileID: 11500000, guid: 1087a1c5705051e4f83d221b77d6ffb3, type: 3}
+  m_Name: Dash
   m_EditorClassIdentifier: 
-  name: Slash
+  name: Dash
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 64
   cooldownTime: 1
-  activeTime: 0.1
-  weaponRange: 3
-  damage: 2
+  activeTime: 0
+  weaponRange: 20
+  damage: 0
   level: 1
   _cooldownTime: 1
-  _activeTime: 0.1
-  _weaponRange: 3
-  _damage: 2
+  _activeTime: 0
+  _weaponRange: 20
+  _damage: 0
   _level: 1
   upgradeType: 0

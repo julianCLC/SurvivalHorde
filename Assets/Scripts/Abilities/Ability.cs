@@ -11,11 +11,14 @@ public class Ability : ScriptableObject
     // ability properties
     [SerializeField] private float cooldownTime;
     [SerializeField] private float activeTime;
+    [SerializeField] private float weaponRange;
     [SerializeField] private int damage;
     [SerializeField] private int level;
+    
 
     [HideInInspector] public float _cooldownTime;
     [HideInInspector] public float _activeTime;
+    [HideInInspector] public float _weaponRange;
     [HideInInspector] public int _damage;
     [HideInInspector] public int _level;
     
@@ -31,6 +34,7 @@ public class Ability : ScriptableObject
     void OnEnable(){
         _cooldownTime = cooldownTime;
         _activeTime = activeTime;
+        _weaponRange = weaponRange;
         _damage = damage;
         _level = level;
         upgradeType = Upgrade.none;

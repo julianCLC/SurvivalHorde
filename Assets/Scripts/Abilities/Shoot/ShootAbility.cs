@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ShootAbility : Ability
 {
-    public float _weaponRange;
-    // public LayerMask hitLayerMask;
     
     public override void Activate(GameObject parent) {
 
@@ -58,7 +56,7 @@ public class ShootAbility : Ability
         BulletTracer bulletTracer = Pooler.Get();
         bulletTracer.PlayFX(shootPoint.forward, shootPoint.position, bulletDistance);
 
-        SoundManager.instance.PlaySound("ShootFX");
+        SoundManager.instance.PlaySound("ShootSFX");
     }
     public override void AbilityUpgrade1(GameObject parent){}
     public override void AbilityUpgrade2(GameObject parent){}

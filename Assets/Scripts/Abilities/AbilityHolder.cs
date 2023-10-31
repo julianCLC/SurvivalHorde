@@ -15,6 +15,7 @@ public class AbilityHolder : MonoBehaviour
         active,
         cooldown
     }
+    
     AbilityState state = AbilityState.ready;
 
     [Tooltip("Grab this from player prefab")]

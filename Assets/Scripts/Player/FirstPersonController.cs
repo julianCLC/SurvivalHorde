@@ -66,6 +66,7 @@ namespace StarterAssets
 		private float _terminalVelocity = 53.0f;
 		Vector3 _playerLookPos;
 		public Transform shootPoint;
+		private Vector3 _impact = Vector3.zero; // for dashing, or pushback
 
 		// Footsteps
 		private AudioSource footStepFX;
@@ -138,6 +139,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			ImpactCalculation();
 			CameraRotation();
 			// PlayerStepSoundFX();
 
@@ -165,31 +167,6 @@ namespace StarterAssets
 
 			playerMesh.LookAt(_playerLookPos);
 
-			/*
-			// if there is an input
-			if (_input.look.sqrMagnitude >= _threshold)
-			{
-				//Don't multiply mouse input by Time.deltaTime
-				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
-
-				// clamp our pitch rotation
-				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
-
-				// Update Cinemachine camera target pitch
-				// CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-
-				// Update Cinemachine camera target position 
-
-				// rotate the player left and right
-				// transform.Rotate(Vector3.up * _rotationVelocity);
-				// playerMesh.Rotate(Vector3.up * _rotationVelocity);
-				playerMesh.LookAt(debugCube);
-				
-			}
-			*/
 		}
 
 		private void Move()
@@ -294,18 +271,6 @@ namespace StarterAssets
 			return Mathf.Clamp(lfAngle, lfMin, lfMax);
 		}
 
-		private void OnDrawGizmosSelected()
-		{
-			Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-			Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
-
-			if (Grounded) Gizmos.color = transparentGreen;
-			else Gizmos.color = transparentRed;
-
-			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
-		}
-
 		void PlayerStepSoundFX(){
 			if(footStepFX == null){ footStepFX = SoundManager.instance.GetSound("PlayerStepFX");}
 			
@@ -326,6 +291,31 @@ namespace StarterAssets
 
 			_stepLastPos = transform.position;
 
+		}
+
+		private void ImpactCalculation(){
+			if(_impact.magnitude > MoveSpeed){
+                _controller.Move(_impact * Time.deltaTime);
+            }
+
+            _impact = Vector3.Lerp(_impact, Vector3.zero, 5*Time.deltaTime);
+		}
+
+		public void ApplyImpact(Vector3 impactToApply){
+			_impact += impactToApply;
+		}
+
+		// DEBUG
+		private void OnDrawGizmosSelected()
+		{
+			Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+			Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+
+			if (Grounded) Gizmos.color = transparentGreen;
+			else Gizmos.color = transparentRed;
+
+			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
 	}
 	

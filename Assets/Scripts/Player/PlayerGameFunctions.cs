@@ -50,7 +50,7 @@ public class PlayerGameFunctions : MonoBehaviour
 
     public void DamageSequence(){
         // do damage animation etc
-        SoundManager.instance.PlaySound("PlayerTakeDamageFX");
+        SoundManager.instance.PlaySound("PlayerTakeDamageSFX");
     }
 
     public void DeathSequence(){
