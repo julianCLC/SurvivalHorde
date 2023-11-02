@@ -53,18 +53,4 @@ public class DashAbility : Ability
     } 
     public override void AbilityUpgrade1(GameObject parent){}
     public override void AbilityUpgrade2(GameObject parent){}
-
-    IEnumerator _Dash(Vector3 impact, CharacterController _controller) {
-        if(_controller == null) {
-            Debug.Log("CONTROLLER NULL");
-            impact = Vector3.zero;
-        }
-
-        while(impact.magnitude > 0.2){
-            _controller.Move(impact * Time.deltaTime);
-
-            impact = Vector3.Lerp(impact, Vector3.zero, 5*Time.deltaTime);
-        }  
-        yield return null;
-    }
 }

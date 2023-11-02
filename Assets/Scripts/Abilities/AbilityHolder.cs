@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -15,8 +16,15 @@ public class AbilityHolder : MonoBehaviour
         active,
         cooldown
     }
+
+    enum AbilityInput {
+        shoot,
+        ability1,
+        ability2
+    }
     
     AbilityState state = AbilityState.ready;
+    [SerializeField] AbilityInput abilityInput;
 
     [Tooltip("Grab this from player prefab")]
     public StarterAssetsInputs _input;
@@ -24,11 +32,9 @@ public class AbilityHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (state)
-        {
-            
+        switch (state) {
             case AbilityState.ready:
-                if(_input.shoot){
+                if(GetAbilityInput()){
                     ability.Activate(GameManager.instance.player);
                     state = AbilityState.active;
                     activeTime = ability._activeTime;
@@ -46,6 +52,24 @@ public class AbilityHolder : MonoBehaviour
                 else{ state = AbilityState.ready; }
             break;
         }
+    }
+
+    bool GetAbilityInput(){
+        bool inputToReturn = false;
+
+        switch (abilityInput) {
+            case AbilityInput.shoot:
+                inputToReturn = _input.shoot;
+                break;
+            case AbilityInput.ability1:
+                inputToReturn = _input.ability1;
+                break;
+            case AbilityInput.ability2:
+                inputToReturn = _input.jump;
+                break;
+        }
+
+        return inputToReturn;
     }
 
     public void LevelUpAbility(){
