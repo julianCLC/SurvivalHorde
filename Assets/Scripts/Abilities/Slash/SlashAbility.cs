@@ -49,6 +49,7 @@ public class SlashAbility : Ability
             BaseEnemyScript enemy = hit.transform.GetComponent<BaseEnemyScript>();
             if( enemy != null){
                 enemy.TakeDamage(_damage, hit.transform.position - mesh.position);
+                ParticleUtilities.PlayFXAtPosition(hit.transform.position, PoolType.hitFX);
 
             }
         }

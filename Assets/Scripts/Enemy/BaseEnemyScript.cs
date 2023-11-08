@@ -23,7 +23,8 @@ public class BaseEnemyScript : MonoBehaviour
     // Pooler Properties
     private Action<BaseEnemyScript> _killAction;
     
-    [HideInInspector] public SmokePuffPooler Pooler;
+    // [HideInInspector] public GenericFXPooler SmokePuffPooler;
+    // [HideInInspector] public GenericFXPooler HitFXPooler;
 
     Rigidbody rb;
 
@@ -31,7 +32,8 @@ public class BaseEnemyScript : MonoBehaviour
     void Start(){
         InitializeEnemey();
 
-        Pooler = ObjectPoolManager.instance.GetPoolByType<SmokePuffPooler>(PoolType.smokePuffFX);
+        // Pooler = ObjectPoolManager.instance.GetPoolByType<SmokePuffPooler>(PoolType.smokePuffFX);
+        // SmokePuffPooler = ObjectPoolManager.instance.GetPoolByType<GenericFXPooler>(PoolType.smokePuffFX);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -103,8 +105,11 @@ public class BaseEnemyScript : MonoBehaviour
 
     IEnumerator _DeathSequence(){
         yield return new WaitForSeconds(initHitRecoverTime * 3);
-        SmokePuffFX smokeFx = Pooler.Get();
-        smokeFx.PlayFX(transform.position);
+        ParticleUtilities.PlayFXAtPosition(transform.position, PoolType.smokePuffFX);
+        // GenericStaticFX smokeFx = SmokePuffPooler.Get();
+        // smokeFx.PlayFX(transform.position);
+
+        
 
         _killAction(this);
     }

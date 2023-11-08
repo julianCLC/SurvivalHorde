@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9058377651965504421}
   - component: {fileID: 9058377651965504420}
   - component: {fileID: 9058377651965504443}
-  - component: {fileID: 3882195700029074592}
+  - component: {fileID: 3923712414545724178}
   m_Layer: 0
   m_Name: SmokePuffFX
   m_TagString: Untagged
@@ -4943,7 +4943,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3882195700029074592
+--- !u!114 &3923712414545724178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4952,7 +4952,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9058377651965504442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6d0a3418b29ce42b8b8d09f7c7827c, type: 3}
+  m_Script: {fileID: 11500000, guid: 69d746603dcaee040befb9d93d816ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 9058377651965504420}

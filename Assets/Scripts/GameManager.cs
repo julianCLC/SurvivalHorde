@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         _playerGameFunctions = player.GetComponent<PlayerGameFunctions>();
         _firstPersonController = player.GetComponent<FirstPersonController>();
 
-        // StartCoroutine(SpawnEnemyTimer());
         // Initialize properties
         _playerXp = initPlayerXp;
         _playerLvlXpThresh = initPlayerLvlThresh;
