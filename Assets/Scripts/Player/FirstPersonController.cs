@@ -307,6 +307,12 @@ namespace StarterAssets
 			_impact += impactToApply;
 		}
 
+		public void WarpToPosition(Vector3 posToWarp){
+			_controller.enabled = false;
+			transform.position = posToWarp;
+			_controller.enabled = true;
+		}
+
 		// DEBUG
 		private void OnDrawGizmosSelected()
 		{

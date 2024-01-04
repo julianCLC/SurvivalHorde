@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     // -- Game properties --
     private float timeSinceLastSpawned = 0f;
     private float spawnInterval = 2f;
+    private int spawnIncreaseInterval = 7;
+    private int enemiesToSpawn = 1;
     private EnemyPooler enemyPooler;
 
     // static
@@ -79,17 +81,29 @@ public class GameManager : MonoBehaviour
         }
 
         // ~~~~~~~~~~~~~~~
-
         if(player == null){
             Debug.Log("PLAYER prefab null!");
             return;
         }
 
+        // Spawn Timer
         if(timeSinceLastSpawned > spawnInterval){
             timeSinceLastSpawned = 0;
-            SpawnEnemies();
+            // SpawnEnemies(enemiesToSpawn);
             // SpawnEnemiesAllPoints();
         }
+
+        // Increase Spawn Rate
+        if((int)(timeElapsed/spawnIncreaseInterval) == 1){
+            
+            enemiesToSpawn++;
+            spawnIncreaseInterval += 7;
+            
+        }
+
+        Debug.Log("test");
+        // Loop player around area
+        LoopPlayerPosition();
 
         // Property Updates
         _playerPos = player.transform.position;
@@ -97,7 +111,7 @@ public class GameManager : MonoBehaviour
         timeSinceLastSpawned += Time.deltaTime;
     }
 
-    void SpawnEnemies(){
+    void SpawnEnemies(int amount){
         Vector3[] spawnPoints = GetSpawnPoints();
         int index = UnityEngine.Random.Range(0, spawnPoints.Length);
         
@@ -155,6 +169,26 @@ public class GameManager : MonoBehaviour
 
         return listOfPoints;
 
+    }
+
+    void LoopPlayerPosition(){
+        // loop player around world when reaching a border
+        if(_playerPos.x > 15){
+            _firstPersonController.WarpToPosition(new Vector3(-15, _playerPos.y, _playerPos.z));
+
+        }
+        if(_playerPos.x < -15){
+            _firstPersonController.WarpToPosition(new Vector3(15, _playerPos.y, _playerPos.z));
+
+        }
+        if(_playerPos.z < -15){
+            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y,15));
+
+        }
+        if(_playerPos.z > 15){
+            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y, -15));
+
+        }
     }
 
     /*

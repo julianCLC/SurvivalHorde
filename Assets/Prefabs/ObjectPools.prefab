@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4416981111996326100}
   - component: {fileID: 7279659723414027018}
+  - component: {fileID: 965001484}
   m_Layer: 0
   m_Name: HitFXPooler
   m_TagString: Untagged
@@ -45,6 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _poolType: 5
+--- !u!114 &965001484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816503258660664115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a7d161b9a132f46b512b7788dae6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _genericFXPrefab: {fileID: 3198853021702451370, guid: 8f5f2624c1c787744a5eef9b66dc4f7a,
+    type: 3}
 --- !u!1 &2156029257464385577
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +238,7 @@ MonoBehaviour:
   - {fileID: 8854432808510470261}
   - {fileID: 6194541043807998438}
   - {fileID: 2156029257464385577}
+  - {fileID: 1816503258660664115}
 --- !u!1 &6194541043807998438
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +248,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2562819285845005731}
+  - component: {fileID: 1342381558}
+  - component: {fileID: 1342381557}
   m_Layer: 0
   m_Name: SmokePuffPooler
   m_TagString: Untagged
@@ -254,6 +272,33 @@ Transform:
   m_Father: {fileID: 7240439921241544832}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1342381558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194541043807998438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfd6a69d1b2f7f40a8fd191175ce759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolType: 3
+--- !u!114 &1342381557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194541043807998438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a7d161b9a132f46b512b7788dae6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _genericFXPrefab: {fileID: 3923712414545724178, guid: e26f33f7d2b613b4fb8d0fc947ac114d,
+    type: 3}
 --- !u!1 &8015064933195085980
 GameObject:
   m_ObjectHideFlags: 0

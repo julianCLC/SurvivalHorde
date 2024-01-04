@@ -42,7 +42,10 @@ public class ObjectPoolManager : MonoBehaviour
 // New Pool steps:
 // 1) Create new script, inheriting PoolerBase
 // 2) Add type to PoolType, same class name as Script
-// 3) Create gameobject under ObjectPools as the spawner
+// 3) Create gameObject under ObjectPools as the spawner
+
+// For Static FX:
+// Use GenericStaticFX, and use GenericFXPooler under the gameObject
 
 public enum PoolType{
     none,
