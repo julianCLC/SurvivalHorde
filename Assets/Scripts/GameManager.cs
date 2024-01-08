@@ -16,15 +16,12 @@ public class GameManager : MonoBehaviour
     // Components
     [field: SerializeField] public GameObject player { get; private set; }
     [field: SerializeField] public Camera cam { get; private set;}
+    public PlayerGameFunctions _playerGameFunctions {get; private set;}
+    public FirstPersonController _firstPersonController {get; private set;}
     [SerializeField] LayerMask GroundLayers;
 
     // Public Properties
-    public PlayerGameFunctions _playerGameFunctions {get; private set;}
-    public FirstPersonController _firstPersonController {get; private set;}
     public Vector3 _playerPos {get; private set;}
-    public Vector3 _cursorWorldPos {get; private set;}
-    // [HideInInspector] public Vector2 _playerPos2D {get; private set;}
-    // [HideInInspector] public Vector3 _screenToWorldCentrePoint {get; private set;}
     public bool _paused {get; private set;}
     public float timeElapsed {get; private set;}
 
@@ -39,11 +36,13 @@ public class GameManager : MonoBehaviour
 
     // ~~ Private Properties ~~
     // -- Game properties --
-    private float timeSinceLastSpawned = 0f;
-    private float spawnInterval = 2f;
-    private int spawnIncreaseInterval = 7;
+    private float timeSinceLastSpawned, timeSinceLastRateIncrease = 0f;
+    private float spawnInterval = 2f;   // time before spawning new monsters
+    private int spawnIncreaseInterval = 10; // time before increasing spawn rate
+    private int spawnIncreaseDelta = 1; // how much to increase spawns
     private int enemiesToSpawn = 1;
     private EnemyPooler enemyPooler;
+    private int areaBounds = 120;
 
     // static
     public static float _MOB_HEIGHT = 1;
@@ -73,35 +72,26 @@ public class GameManager : MonoBehaviour
         // Debug
         if(debugPause) _paused = debugPause;
         
-        if(_paused){
-            Time.timeScale = 0;
-        }
-        else {
-            Time.timeScale = 1;
-        }
+        // Check Pause
+        Time.timeScale = _paused ? 0 : 1;
 
-        // ~~~~~~~~~~~~~~~
-        if(player == null){
-            Debug.Log("PLAYER prefab null!");
-            return;
+        // Increase Spawn Rate
+        // if((int)(timeElapsed/spawnIncreaseInterval) == 1){
+        if(timeSinceLastRateIncrease > spawnIncreaseInterval){
+            
+            enemiesToSpawn += spawnIncreaseDelta;
+            timeSinceLastRateIncrease = 0;
         }
 
         // Spawn Timer
         if(timeSinceLastSpawned > spawnInterval){
             timeSinceLastSpawned = 0;
-            // SpawnEnemies(enemiesToSpawn);
+            SpawnEnemies(enemiesToSpawn);
             // SpawnEnemiesAllPoints();
         }
 
-        // Increase Spawn Rate
-        if((int)(timeElapsed/spawnIncreaseInterval) == 1){
-            
-            enemiesToSpawn++;
-            spawnIncreaseInterval += 7;
-            
-        }
+        
 
-        Debug.Log("test");
         // Loop player around area
         LoopPlayerPosition();
 
@@ -109,14 +99,17 @@ public class GameManager : MonoBehaviour
         _playerPos = player.transform.position;
         timeElapsed += Time.deltaTime;
         timeSinceLastSpawned += Time.deltaTime;
+        timeSinceLastRateIncrease += Time.deltaTime;
     }
 
     void SpawnEnemies(int amount){
         Vector3[] spawnPoints = GetSpawnPoints();
-        int index = UnityEngine.Random.Range(0, spawnPoints.Length);
         
-        BaseEnemyScript newEnemy = enemyPooler.Get();
-        newEnemy.transform.position = spawnPoints[index];
+        for(int i = 0; i < amount; i++){
+            int index = UnityEngine.Random.Range(0, spawnPoints.Length);
+            BaseEnemyScript newEnemy = enemyPooler.Get();
+            newEnemy.transform.position = spawnPoints[index];
+        }
     }
 
     void SpawnEnemiesAllPoints(){
@@ -140,8 +133,6 @@ public class GameManager : MonoBehaviour
 
         int points = 12;
         float step = 360f/points;
-        // float j = worldCentrePoint.x;
-        // float k = worldCentrePoint.z;
         float j = _playerPos.x;
         float k = _playerPos.z;
         float r = 25;
@@ -160,33 +151,28 @@ public class GameManager : MonoBehaviour
 
             t += step;
 
-            // newPoint = new Vector3(xPoint, _MOB_HEIGHT, yPoint);
             listOfPoints[i] = new Vector3(xPoint, _MOB_HEIGHT, yPoint);
-
-            // BaseEnemyScript newEnemy = enemyPooler.Get();
-            // newEnemy.transform.position = new Vector3(xPoint, _MOB_HEIGHT, yPoint);;
         }
 
         return listOfPoints;
-
     }
 
     void LoopPlayerPosition(){
         // loop player around world when reaching a border
-        if(_playerPos.x > 15){
-            _firstPersonController.WarpToPosition(new Vector3(-15, _playerPos.y, _playerPos.z));
+        if(_playerPos.x > areaBounds){
+            _firstPersonController.WarpToPosition(new Vector3(-areaBounds, _playerPos.y, _playerPos.z));
 
         }
-        if(_playerPos.x < -15){
-            _firstPersonController.WarpToPosition(new Vector3(15, _playerPos.y, _playerPos.z));
+        if(_playerPos.x < -areaBounds){
+            _firstPersonController.WarpToPosition(new Vector3(areaBounds, _playerPos.y, _playerPos.z));
 
         }
-        if(_playerPos.z < -15){
-            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y,15));
+        if(_playerPos.z < -areaBounds){
+            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y, areaBounds));
 
         }
-        if(_playerPos.z > 15){
-            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y, -15));
+        if(_playerPos.z > areaBounds){
+            _firstPersonController.WarpToPosition(new Vector3(_playerPos.x, _playerPos.y, -areaBounds));
 
         }
     }
