@@ -1,5 +1,5 @@
 # SurvivalHorde
-WIP Unity game
+WIP Unity game - Personal Project
 
 A game with the likeness of Vampire survivors and magic survival
 
