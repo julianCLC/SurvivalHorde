@@ -18,12 +18,16 @@ MonoBehaviour:
     m_Bits: 64
   cooldownTime: 1
   activeTime: 0
+  holdTime: 0
   weaponRange: 5
   damage: 5
+  targetAmt: 1
   level: 1
   _cooldownTime: 1
   _activeTime: 0
   _weaponRange: 5
+  _holdTime: 0
   _damage: 5
-  _level: 1
+  _targetAmt: 2
+  _level: 4
   upgradeType: 0

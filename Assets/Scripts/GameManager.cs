@@ -45,8 +45,10 @@ public class GameManager : MonoBehaviour
     private int areaBounds = 120;
 
     // static
-    public static float _MOB_HEIGHT = 1;
+    public static float MOB_HEIGHT = 1;
+    public static float SPAWN_RADIUS = 25f;
     public static GameManager instance {get; private set;}
+    
 
     void Start(){
         if(instance != null && instance != this){
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
         float step = 360f/points;
         float j = _playerPos.x;
         float k = _playerPos.z;
-        float r = 25;
+        float r = SPAWN_RADIUS;
         
         float t = 0;
         float xPoint;
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
 
             t += step;
 
-            listOfPoints[i] = new Vector3(xPoint, _MOB_HEIGHT, yPoint);
+            listOfPoints[i] = new Vector3(xPoint, MOB_HEIGHT, yPoint);
         }
 
         return listOfPoints;

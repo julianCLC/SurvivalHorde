@@ -8,18 +8,24 @@ public class Ability : ScriptableObject
     public new string name;
     public LayerMask hitLayerMask;
 
-    // ability properties
+    // ~~ Init ability properties~~
+    // ~ timers
     [SerializeField] private float cooldownTime;
     [SerializeField] private float activeTime;
+    [SerializeField] private float holdTime; // how long to hold before ability is augmented
+
     [SerializeField] private float weaponRange;
     [SerializeField] private int damage;
+    [SerializeField] private int targetAmt = 1;
     [SerializeField] private int level;
-    
 
+    // ~~ Properties using during game
     [HideInInspector] public float _cooldownTime;
     [HideInInspector] public float _activeTime;
     [HideInInspector] public float _weaponRange;
+    [HideInInspector] public float _holdTime;
     [HideInInspector] public int _damage;
+    [HideInInspector] public int _targetAmt;
     [HideInInspector] public int _level;
     
     
@@ -34,9 +40,14 @@ public class Ability : ScriptableObject
     void OnEnable(){
         _cooldownTime = cooldownTime;
         _activeTime = activeTime;
+        _holdTime = holdTime;
+        
         _weaponRange = weaponRange;
         _damage = damage;
+        _targetAmt = targetAmt;
         _level = level;
+        
+
         upgradeType = Upgrade.none;
 
     }

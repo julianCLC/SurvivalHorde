@@ -4449,6 +4449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: c46e6b003a1d3ff4abf25c6b3a58aba6, type: 2}
+  augmentAbility: {fileID: 0}
+  holdTime: 2
   abilityInput: 2
   _input: {fileID: 135756641613574975}
 --- !u!1001 &307928627
@@ -14776,7 +14778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1097546094
 Transform:
   m_ObjectHideFlags: 0
@@ -16426,6 +16428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 6ac25846d7ea3814cad1f567d3ffb6f1, type: 2}
+  augmentAbility: {fileID: 11400000, guid: bafc1dea6e9a4eb41a1c9a0da0f0a712, type: 2}
+  holdTime: 2
   abilityInput: 0
   _input: {fileID: 135756641613574975}
 --- !u!1 &1247340222
@@ -26907,7 +26911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1965112883
 Transform:
   m_ObjectHideFlags: 0
@@ -30140,6 +30144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: bafc1dea6e9a4eb41a1c9a0da0f0a712, type: 2}
+  augmentAbility: {fileID: 0}
+  holdTime: 2
   abilityInput: 1
   _input: {fileID: 135756641613574975}
 --- !u!1 &2113189407
@@ -30887,7 +30893,7 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: MoveSpeed
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -30897,7 +30903,7 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: SprintSpeed
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}

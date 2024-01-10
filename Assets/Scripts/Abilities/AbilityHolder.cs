@@ -6,10 +6,16 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
+    // Handles player input and activation of ability
 
     public Ability ability;
+    public Ability augmentAbility;
+    public float holdTime = 1;
     float cooldownTime;
     float activeTime;
+    
+
+    float currentHoldTime;
 
     enum AbilityState {
         ready,
@@ -29,16 +35,28 @@ public class AbilityHolder : MonoBehaviour
     [Tooltip("Grab this from player prefab")]
     public StarterAssetsInputs _input;
 
-    // Update is called once per frame
     void Update()
     {
+        Debug.Log("holdtime: " + currentHoldTime);
         switch (state) {
             case AbilityState.ready:
+            // if input held, increase hold time
+            // if not,
+            //      if hold time is enough, augment ability
+            // else 
                 if(GetAbilityInput()){
-                    ability.Activate(GameManager.instance.player);
+                    currentHoldTime += Time.deltaTime;
+                }
+                else{
+                    Ability abilityToActivate = currentHoldTime > holdTime ? augmentAbility : ability;
+
+                    StartCoroutine(ActivateMulitple(abilityToActivate));
+
+                    currentHoldTime = 0;
                     state = AbilityState.active;
                     activeTime = ability._activeTime;
                 }
+                
                 break;
             case AbilityState.active:
                 if(activeTime > 0){ activeTime -= Time.deltaTime; }
@@ -70,6 +88,15 @@ public class AbilityHolder : MonoBehaviour
         }
 
         return inputToReturn;
+    }
+
+    IEnumerator ActivateMulitple(Ability _ability){
+
+        for(int i = 0; i < _ability._targetAmt; i++){
+            _ability.Activate(GameManager.instance.player);
+            yield return new WaitForSeconds(0.1f);
+        }
+
     }
 
     public void LevelUpAbility(){

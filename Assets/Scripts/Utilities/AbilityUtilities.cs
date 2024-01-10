@@ -15,7 +15,7 @@ public class AbilityUtilities : MonoBehaviour
     }
 
     public Ability[] GetRandomAbilities(){
-        // randomize
+        // TODO: randomize
 
         return abilities;
     }

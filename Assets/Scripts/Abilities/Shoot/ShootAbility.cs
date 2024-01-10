@@ -34,30 +34,46 @@ public class ShootAbility : Ability
     }
 
     public override void BaseAbility(GameObject parent){
-        Transform shootPoint = GameManager.instance._firstPersonController.shootPoint;
-        float bulletDistance = _weaponRange;
+        // Detect Nearest Enemy
+        float minDistSoFar = Mathf.Infinity;
+        Collider enemyToTarget = null;
+        Collider[] colliders = Physics.OverlapSphere(parent.transform.position, GameManager.SPAWN_RADIUS, hitLayerMask, QueryTriggerInteraction.Ignore);
+        if(colliders.Length > 0){
+            foreach(Collider collider in colliders){
+                float dist = Vector3.Distance(collider.transform.position, parent.transform.position);
 
-        // get direction to cursor
-        Vector3 cursorWorldPos = GameManager.instance.ScreenToWorldPos(GameManager.instance._firstPersonController._cursorScreenPos);
-        Vector3 shootEndPoint = new Vector3(cursorWorldPos.x, shootPoint.position.y, cursorWorldPos.z);
-        Vector3 hitDirection = Vector3.Normalize(shootEndPoint - shootPoint.position);
+                if(dist < minDistSoFar){
+                    enemyToTarget = collider;
+                    minDistSoFar = dist;    
+                }
+            }
+        }
+        
+        // Shoot Enemy
+        Transform shootPoint = GameManager.instance._firstPersonController.shootPoint;
+        Vector3 hitDirection = enemyToTarget != null ? Vector3.Normalize(enemyToTarget.transform.position - shootPoint.position) : shootPoint.forward;
+        float bulletDistance = GameManager.SPAWN_RADIUS;
 
         RaycastHit raycasthit;
-        if(Physics.Raycast(shootPoint.position, hitDirection, out raycasthit, _weaponRange, hitLayerMask)){
-            // Transform enemyTransform = raycasthit.transform;
+        if(Physics.Raycast(shootPoint.position, hitDirection, out raycasthit, bulletDistance, hitLayerMask)){
             var enemyScript = raycasthit.transform.GetComponent<BaseEnemyScript>();
+
             if(enemyScript){
                 enemyScript.TakeDamage(_damage, hitDirection);
             }
+
             bulletDistance = Vector3.Distance(shootPoint.position, raycasthit.point);    
         }
 
+        // Particle FX
         BulletTracerPooler Pooler = ObjectPoolManager.instance.GetPoolByType<BulletTracerPooler>(PoolType.bulletFX);
         BulletTracer bulletTracer = Pooler.Get();
-        bulletTracer.PlayFX(shootPoint.forward, shootPoint.position, bulletDistance);
+        bulletTracer.PlayFX(hitDirection, shootPoint.position, bulletDistance);
 
+        // Sound FX
         SoundManager.instance.PlaySound("ShootSFX");
     }
+
     public override void AbilityUpgrade1(GameObject parent){}
     public override void AbilityUpgrade2(GameObject parent){}
 }
